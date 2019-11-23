@@ -1,0 +1,22 @@
+{
+  "name": "devops_group1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stacy1930/DevOps_B3.git"
+  },
+  "author": "Logos Lorenzo, Maurin Bastien, Myran Nolwenn, Perales Stacy, Philibert Olivier",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stacy1930/DevOps_B3/issues"
+  },
+  "homepage": "https://github.com/stacy1930/DevOps_B3#readme",
+  "dependencies": {
+    "mongoose": "^5.7.12"
+  }
+}
