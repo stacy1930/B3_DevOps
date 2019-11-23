@@ -3,3 +3,4 @@ npm init (see package.json for the parameters)
 npm install express
 npm install mongoose --save
 npm install dotenv
+npm install body-parser
