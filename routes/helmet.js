@@ -8,6 +8,7 @@ router.get("/", (req, res) => {
   res.send("hello");
 });
 
+// POST
 router.post("/", (req, res) => {
   const helmet = new Helmet({
     type: req.body.type,
