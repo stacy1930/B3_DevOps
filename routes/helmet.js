@@ -1,5 +1,5 @@
 const express = require("express");
-const Composant = require("../models/Composant");
+const Component = require("../models/Component");
 const types = require("../constants");
 
 //IMPORT ROUTER
@@ -8,7 +8,7 @@ const router = express.Router();
 // GET -- DETAIL OF HELMET (BY ID) SPECIFIC HELMET
 router.get("/:id", async (req, res) => {
     try {
-        const helmet = await Composant.findOne({_id: req.params.id, type: types.HELMET});
+        const helmet = await Component.findOne({_id: req.params.id, type: types.HELMET});
         res.json(helmet);
     } catch (err) {
         res.json({ message: err });
@@ -17,7 +17,7 @@ router.get("/:id", async (req, res) => {
 
 // POST -- SUBMIT A HELMET
 router.post("/", async (req, res) => {
-    const helmet = new Composant({
+    const helmet = new Component({
         type: types.HELMET,
         name: req.body.name,
         value: req.body.value
@@ -35,7 +35,7 @@ router.post("/", async (req, res) => {
 router.put('/:id', async (req, res) => {
     try {
         // !! WARNINGS !! The patch doesn't seems to work easily with mongoose, so we'll have to put everytime
-        const updateHelmet = await Composant.updateOne(
+        const updateHelmet = await Component.updateOne(
             { _id: req.params.id, type: types.HELMET },
             {
                 $set: {
@@ -48,7 +48,7 @@ router.put('/:id', async (req, res) => {
         if (updateHelmet["n"] < 1){ res.json({error: `helmet ${req.params.id} not found`}); }
         if (updateHelmet["n"] > 1){ res.json({error: `too many helmets found with the id ${req.params.id}`}); }
         
-        const helmet = await Composant.findOne({_id: req.params.id, type: types.HELMET});
+        const helmet = await Component.findOne({_id: req.params.id, type: types.HELMET});
         res.json(helmet);
     } catch (err) {
         res.json({ message: err });
@@ -58,7 +58,7 @@ router.put('/:id', async (req, res) => {
 // DELETE HELMET -- DELETE SPECIFIC HELMET
 router.delete("/:id", async (req, res) => {
     try {
-        let removedHelmet = await Composant.deleteOne({ _id: req.params.id, type: types.HELMET });
+        let removedHelmet = await Component.deleteOne({ _id: req.params.id, type: types.HELMET });
         if(removedHelmet["n"] < 1){
             res.json({error: `helmet ${req.params.id} not found`});
         }

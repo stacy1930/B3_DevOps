@@ -1,5 +1,5 @@
 const express = require("express");
-const Composant = require("../models/Composant");
+const Component = require("../models/Component");
 const types = require("../constants");
 
 // Import ROUTER
@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.get("/:id", async (req, res) => {
   try {
-    const torso = await Composant.findOne({_id: req.params.id, type: types.TORSO});
+    const torso = await Component.findOne({_id: req.params.id, type: types.TORSO});
     res.json(torso);
   } catch (err) {
     res.json({ message: err });
@@ -18,7 +18,7 @@ router.get("/:id", async (req, res) => {
 
 // POST -- SUBMIT A TORSO
 router.post("/", async (req, res) => {
-  const torso = new Composant({
+  const torso = new Component({
     type: types.TORSO,
     name: req.body.name,
     value: req.body.value
@@ -35,7 +35,7 @@ router.post("/", async (req, res) => {
 // PUT -- UPDATE A TORSO
 router.put('/:id', async (req, res) => {
   try {
-    const updateTorso = await Composant.updateOne(
+    const updateTorso = await Component.updateOne(
       { _id: req.params.id, type: types.TORSO },
       { $set: { 
           name: req.body.name,
@@ -46,7 +46,7 @@ router.put('/:id', async (req, res) => {
     if (updateTorso["n"] < 1){ res.json({error: `torso ${req.params.id} not found`}); }
     if (updateTorso["n"] > 1){ res.json({error: `too many torsos found with the id ${req.params.id}`}); }
     
-    let torso = await Composant.find({ _id: req.params.id, type: types.TORSO });
+    let torso = await Component.find({ _id: req.params.id, type: types.TORSO });
     res.json(torso);
   } catch (err) {
     res.json({ message: err });
@@ -57,7 +57,7 @@ router.put('/:id', async (req, res) => {
 
 router.delete("/:id", async (req, res) => {
   try {
-    let removedTorso = await Composant.remove({ _id: req.params.id, type: types.TORSO });
+    let removedTorso = await Component.remove({ _id: req.params.id, type: types.TORSO });
     if(removedTorso["n"] < 1){
       res.json({error: `torso ${req.params.id} not found`});
     }

@@ -1,5 +1,5 @@
 const express = require("express");
-const Composant = require("../models/Composant");
+const Component = require("../models/Component");
 const types = require("../constants");
 
 //IMPORT ROUTER
@@ -8,7 +8,7 @@ const router = express.Router();
 // GET -- DETAIL OF LEG (BY ID) SPECIFIC LEG
 router.get("/:id", async (req, res) => {
     try {
-        const leg = await Composant.findOne({_id: req.params.id, type: types.LEG});
+        const leg = await Component.findOne({_id: req.params.id, type: types.LEG});
         res.json(leg);
     } catch (err) {
         res.json({ message: err });
@@ -17,7 +17,7 @@ router.get("/:id", async (req, res) => {
 
 // POST -- SUBMIT A LEG
 router.post("/", async (req, res) => {
-    const leg = new Composant({
+    const leg = new Component({
         type: types.LEG,
         name: req.body.name,
         value: req.body.value
@@ -34,7 +34,7 @@ router.post("/", async (req, res) => {
 // UPDATE
 router.put('/:id', async (req, res) => {
     try {
-        const updateLeg = await Composant.updateOne(
+        const updateLeg = await Component.updateOne(
             { _id: req.params.id, type: types.LEG },
             {
                 $set: {
@@ -46,7 +46,7 @@ router.put('/:id', async (req, res) => {
         if (updateLeg["n"] < 1){ res.json({error: `leg ${req.params.id} not found`}); }
         if (updateLeg["n"] > 1){ res.json({error: `too many legs found with the id ${req.params.id}`}); }
         
-        let leg = await Composant.find({ _id: req.params.id, type: types.LEG });
+        let leg = await Component.find({ _id: req.params.id, type: types.LEG });
         res.json(leg);
     } catch (err) {
         res.json({ message: err });
@@ -56,7 +56,7 @@ router.put('/:id', async (req, res) => {
 // DELETE LEG -- DELETE SPECIFIC LEG
 router.delete("/:id", async (req, res) => {
     try {
-        let removedLeg = await Composant.remove({ _id: req.params.id, type: types.LEG });
+        let removedLeg = await Component.remove({ _id: req.params.id, type: types.LEG });
         if(removedLeg["n"] < 1){
             res.json({error: `leg ${req.params.id} not found`});
         }

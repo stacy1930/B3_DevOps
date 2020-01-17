@@ -1,12 +1,12 @@
 const express = require('express')
 const router = express.Router();
-const Composant = require('../models/Composant');
+const Component = require('../models/Component');
 const types = require('../constants');
 
 //GET
 router.get('/:id', async (req, res) => {
     try{
-        const arm = await Composant.findOne({_id: req.params.id, type: types.ARM});
+        const arm = await Component.findOne({_id: req.params.id, type: types.ARM});
         res.json(arm);
     }
     catch (err){
@@ -16,7 +16,7 @@ router.get('/:id', async (req, res) => {
 
 // POST
 router.post('/', async (req, res) => {
-    const arm = new Composant({
+    const arm = new Component({
         type: types.ARM,
         name: req.body.name,
         value: req.body.value
@@ -34,7 +34,7 @@ router.post('/', async (req, res) => {
 // UPDATE
 router.put('/:id', async (req, res) => {
     try {
-        const updateArm = await Composant.updateOne(
+        const updateArm = await Component.updateOne(
             { _id: req.params.id, type: types.ARM },
             { $set: { 
                 name: req.body.name,
@@ -45,7 +45,7 @@ router.put('/:id', async (req, res) => {
         if (updateArm["n"] < 1){ res.json({error: `arm ${req.params.id} not found`}); }
         if (updateArm["n"] > 1){ res.json({error: `too many legs found with the id ${req.params.id}`}); }
         
-        let arm = await Composant.find({ _id: req.params.id, type: types.ARM });
+        let arm = await Component.find({ _id: req.params.id, type: types.ARM });
         res.json(arm);
     } catch (err) {
         res.json({ message: err });
@@ -55,7 +55,7 @@ router.put('/:id', async (req, res) => {
 // DELETE
 router.delete('/:id', async (req, res) =>{
     try{
-        let removedArm = await Composant.remove({_id: req.params.id, type: types.ARM});
+        let removedArm = await Component.remove({_id: req.params.id, type: types.ARM});
         if (removedArm["n"] < 1){
             res.json({error: `arm ${req.params.id} not found`});
         }
