@@ -24,7 +24,6 @@ export class ArmComponent implements OnInit {
 
   ngOnInit() {
     this.http.get("http://localhost:3000/arm").subscribe(value => {
-      // tslint:disable-next-line: prefer-for-of
       for (let i = 0; i < Object.keys(value).length; i++) {
         this.arms.push([value[i].name, value[i].value, value[i]._id]);
       }

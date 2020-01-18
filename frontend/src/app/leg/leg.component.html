@@ -31,4 +31,17 @@
       <button type="reset" class="btn btn-primary reset">Reset</button>
     </div>
   </form>
+
+  <ul>
+    <li *ngFor="let leg of legs">
+      <ul>
+        <span>Nom : {{ leg[0] }}</span
+        ><br />
+        <span>Valeur : {{ leg[1] }}</span
+        ><br />
+        <span>Id : {{ leg[2] }}</span
+        ><br /><br />
+      </ul>
+    </li>
+  </ul>
 </div>

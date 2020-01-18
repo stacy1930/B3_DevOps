@@ -17,8 +17,20 @@ export class HelmetComponent implements OnInit {
     helmetValue: new FormControl("")
   });
 
-  constructor() {}
+  helmets = [];
+  submitted = false;
+  constructor(private http: HttpClient) {}
 
-  ngOnInit() {}
-  onSubmit() {}
+  ngOnInit() {
+    this.http.get("http://localhost:3000/helmet").subscribe(value => {
+      for (let i = 0; i < Object.keys(value).length; i++) {
+        this.helmets.push([value[i].name, value[i].value, value[i]._id]);
+      }
+      console.log(this.helmets);
+    });
+  }
+  onSubmit() {
+    this.submitted = true;
+  }
+  onDeleteHelmet() {}
 }

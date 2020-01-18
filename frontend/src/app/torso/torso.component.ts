@@ -16,9 +16,22 @@ export class TorsoComponent implements OnInit {
     torsoName: new FormControl(""),
     torsoValue: new FormControl("")
   });
-  constructor() {}
+  torsos = [];
+  submitted = false;
 
-  ngOnInit() {}
+  constructor(private http: HttpClient) {}
 
-  onSubmit() {}
+  ngOnInit() {
+    this.http.get("http://localhost:3000/torso").subscribe(value => {
+      for (let i = 0; i < Object.keys(value).length; i++) {
+        this.torsos.push([value[i].name, value[i].value, value[i]._id]);
+      }
+      console.log(this.torsos);
+    });
+  }
+
+  onSubmit() {
+    this.submitted = true;
+  }
+  onDeleteTorso() {}
 }

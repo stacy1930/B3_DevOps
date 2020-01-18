@@ -18,6 +18,7 @@ export class CloakComponent implements OnInit {
   });
 
   cloaks = [];
+  submitted = false;
 
   constructor(private http: HttpClient) {}
 
@@ -31,5 +32,8 @@ export class CloakComponent implements OnInit {
     });
   }
 
-  onSubmit() {}
+  onSubmit() {
+    this.submitted = true;
+  }
+  onDeleteCloak() {}
 }

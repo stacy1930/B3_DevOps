@@ -16,9 +16,23 @@ export class LegComponent implements OnInit {
     legName: new FormControl(""),
     legValue: new FormControl("")
   });
-  constructor() {}
+  legs = [];
+  submitted = false;
 
-  ngOnInit() {}
+  constructor(private http: HttpClient) {}
 
-  onSubmit() {}
+  ngOnInit() {
+    this.http.get("http://localhost:3000/leg").subscribe(value => {
+      for (let i = 0; i < Object.keys(value).length; i++) {
+        this.legs.push([value[i].name, value[i].value, value[i]._id]);
+      }
+      console.log(this.legs);
+    });
+  }
+
+  onDeleteLeg() {}
+
+  onSubmit() {
+    this.submitted = true;
+  }
 }

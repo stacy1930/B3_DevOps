@@ -31,4 +31,17 @@
       <button type="reset" class="btn btn-danger reset">Reset</button>
     </div>
   </form>
+
+  <ul>
+    <li *ngFor="let torso of torsos">
+      <ul>
+        <span>Nom : {{ torso[0] }}</span
+        ><br />
+        <span>Valeur : {{ torso[1] }}</span
+        ><br />
+        <span>Id : {{ torso[2] }}</span
+        ><br /><br />
+      </ul>
+    </li>
+  </ul>
 </div>
