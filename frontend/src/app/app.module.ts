@@ -10,6 +10,7 @@ import { LegComponent } from "./leg/leg.component";
 import { ArmComponent } from "./arm/arm.component";
 import { ArmorComponent } from "./armor/armor.component";
 import { HeaderComponent } from "./header/header.component";
+import { HttpClientModule } from "@angular/common/http";
 
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
@@ -24,7 +25,13 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     ArmorComponent,
     HeaderComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <h1>Create your cloak!</h1>
 
-  <!-- ARM CREATION FORM -->
+  <!-- CLOAK CREATION FORM -->
   <form [formGroup]="createCloakForm" (ngSubmit)="onSubmit()">
     <div class="col-md-6 mb-3">
       <label> Cloak name :</label>
@@ -31,4 +31,17 @@
       <button type="reset" class="btn btn-primary reset">Reset</button>
     </div>
   </form>
+
+  <ul>
+    <li *ngFor="let cloak of cloaks">
+      <ul>
+        <span>Nom : {{ cloak[0] }}</span
+        ><br />
+        <span>Valeur : {{ cloak[1] }}</span
+        ><br />
+        <span>Id : {{ cloak[2] }}</span
+        ><br /><br />
+      </ul>
+    </li>
+  </ul>
 </div>
