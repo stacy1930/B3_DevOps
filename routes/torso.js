@@ -1,5 +1,6 @@
 const express = require("express");
-const Torso = require("../models/Torso");
+const Component = require("../models/Component");
+const types = require("../constants");
 
 // Import ROUTER
 const router = express.Router();
@@ -8,18 +9,7 @@ const router = express.Router();
 
 router.get("/:id", async (req, res) => {
   try {
-    const torso = await Torso.findById(req.params.id);
-    res.json(torso);
-  } catch (err) {
-    res.json({ message: err });
-  }
-});
-
-// GET - LIST OF TORSOS
-
-router.get("/", async (req, res) => {
-  try {
-    const torso = await Torso.find();
+    const torso = await Component.findOne({_id: req.params.id, type: types.TORSO});
     res.json(torso);
   } catch (err) {
     res.json({ message: err });
@@ -28,8 +18,8 @@ router.get("/", async (req, res) => {
 
 // POST -- SUBMIT A TORSO
 router.post("/", async (req, res) => {
-  const torso = new Torso({
-    type: req.body.type,
+  const torso = new Component({
+    type: types.TORSO,
     name: req.body.name,
     value: req.body.value
   });
@@ -42,12 +32,36 @@ router.post("/", async (req, res) => {
   }
 });
 
+// PUT -- UPDATE A TORSO
+router.put('/:id', async (req, res) => {
+  try {
+    const updateTorso = await Component.updateOne(
+      { _id: req.params.id, type: types.TORSO },
+      { $set: { 
+          name: req.body.name,
+          value: req.body.value
+        } 
+      }
+    );
+    if (updateTorso["n"] < 1){ res.json({error: `torso ${req.params.id} not found`}); }
+    if (updateTorso["n"] > 1){ res.json({error: `too many torsos found with the id ${req.params.id}`}); }
+    
+    let torso = await Component.find({ _id: req.params.id, type: types.TORSO });
+    res.json(torso);
+  } catch (err) {
+    res.json({ message: err });
+  }
+});
+
 // DELETE -- DELETE SPECIFIC TORSO
 
 router.delete("/:id", async (req, res) => {
   try {
-    const removeTorso = await Torso.remove({ _id: req.params.id });
-    res.json(removeTorso);
+    let removedTorso = await Component.remove({ _id: req.params.id, type: types.TORSO });
+    if(removedTorso["n"] < 1){
+      res.json({error: `torso ${req.params.id} not found`});
+    }
+    res.json({message: `torso ${req.params.id} deleted`});
   } catch (err) {
     res.json({ message: err });
   }

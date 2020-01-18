@@ -1,11 +1,12 @@
 const express = require('express')
 const router = express.Router();
-const Arm = require('../models//Arm');
+const Component = require('../models/Component');
+const types = require('../constants');
 
 //GET
 router.get('/:id', async (req, res) => {
     try{
-        const arm = await Arm.findById(req.params.id);
+        const arm = await Component.findOne({_id: req.params.id, type: types.ARM});
         res.json(arm);
     }
     catch (err){
@@ -13,20 +14,10 @@ router.get('/:id', async (req, res) => {
     }
 })
 
-// LIST
-router.get('/', async (req, res) => {
-    try{
-        const arms = await Arm.find();
-        res.json(arms);
-    }catch(err){
-        res.json({message: err});
-    }
-})
-
 // POST
 router.post('/', async (req, res) => {
-    const arm = new Arm({
-        type: req.body.type,
+    const arm = new Component({
+        type: types.ARM,
         name: req.body.name,
         value: req.body.value
     });
@@ -41,18 +32,21 @@ router.post('/', async (req, res) => {
 })
 
 // UPDATE
-router.patch('/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
     try {
-        const updateArm = await Arm.updateOne(
-            { _id: req.params.id },
+        const updateArm = await Component.updateOne(
+            { _id: req.params.id, type: types.ARM },
             { $set: { 
-                type: req.body.type,
-                nem: req.body.name,
+                name: req.body.name,
                 value: req.body.value
                 } 
             }
         );
-        res.json(updateArm);
+        if (updateArm["n"] < 1){ res.json({error: `arm ${req.params.id} not found`}); }
+        if (updateArm["n"] > 1){ res.json({error: `too many legs found with the id ${req.params.id}`}); }
+        
+        let arm = await Component.find({ _id: req.params.id, type: types.ARM });
+        res.json(arm);
     } catch (err) {
         res.json({ message: err });
     }
@@ -61,8 +55,11 @@ router.patch('/:id', async (req, res) => {
 // DELETE
 router.delete('/:id', async (req, res) =>{
     try{
-        const removedArm = await Arm.remove({_id: req.params.id});
-        res.json(removedArm);
+        let removedArm = await Component.remove({_id: req.params.id, type: types.ARM});
+        if (removedArm["n"] < 1){
+            res.json({error: `arm ${req.params.id} not found`});
+        }
+        res.json({message: `arm ${req.params.id} deleted`});
     }catch (err) {
         res.json({message: err});
     }
