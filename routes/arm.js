@@ -4,10 +4,10 @@ const Component = require('../models/Component');
 const types = require('../constants');
 
 //GET
-router.get('/:id', async (req, res) => {
+router.get('/', async (req, res) => {
     try{
-        const arm = await Component.findOne({_id: req.params.id, type: types.ARM});
-        res.json(arm);
+        const arms = await Component.find({type: types.ARM});
+        res.json(arms);
     }
     catch (err){
         res.json({message: err});

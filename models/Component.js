@@ -6,4 +6,4 @@ const ComponentSchema = mongoose.Schema({
   value: Number
 });
 
-module.exports = mongoose.model("Componant", ComponentSchema);
+module.exports = mongoose.model("Component", ComponentSchema);

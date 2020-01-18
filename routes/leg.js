@@ -5,11 +5,11 @@ const types = require("../constants");
 //IMPORT ROUTER
 const router = express.Router();
 
-// GET -- DETAIL OF LEG (BY ID) SPECIFIC LEG
-router.get("/:id", async (req, res) => {
+// GET -- LIST OF LEGS
+router.get("/", async (req, res) => {
     try {
-        const leg = await Component.findOne({_id: req.params.id, type: types.LEG});
-        res.json(leg);
+        const legs = await Component.find({type: types.LEG});
+        res.json(legs);
     } catch (err) {
         res.json({ message: err });
     }
