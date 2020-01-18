@@ -1,1 +1,34 @@
-<p>torso works!</p>
+<div class="container-fluid">
+  <h1>Create your torso!</h1>
+
+  <!-- ARM CREATION FORM -->
+  <form [formGroup]="createTorsoForm" (ngSubmit)="onSubmit()">
+    <div class="col-md-6 mb-3">
+      <label> Cloak name :</label>
+      <input
+        type="text"
+        formControlName="torsoName"
+        class="form-control"
+        placeholder="Name"
+      />
+    </div>
+
+    <div class="col-md-4 mb-3" id="torsoValue">
+      <label> Torso value:</label>
+      <input
+        type="number"
+        formControlName="torsoValue"
+        class="form-control"
+        placeholder="100"
+      />
+    </div>
+
+    <div class="ButtonEnvoieReset">
+      <button type="submit" class="btn btn-primary submit">
+        Create torso!
+      </button>
+      <br /><br />
+      <button type="reset" class="btn btn-primary reset">Reset</button>
+    </div>
+  </form>
+</div>

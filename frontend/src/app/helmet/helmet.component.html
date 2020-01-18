@@ -1,1 +1,34 @@
-<p>helmet works!</p>
+<div class="container-fluid">
+  <h1>Create your helmet!</h1>
+
+  <!-- ARM CREATION FORM -->
+  <form [formGroup]="createHelmetForm" (ngSubmit)="onSubmit()">
+    <div class="col-md-6 mb-3">
+      <label> Helmet name :</label>
+      <input
+        type="text"
+        formControlName="helmetName"
+        class="form-control"
+        placeholder="Name"
+      />
+    </div>
+
+    <div class="col-md-4 mb-3" id="helmetValue">
+      <label> Helmet value:</label>
+      <input
+        type="number"
+        formControlName="helmetValue"
+        class="form-control"
+        placeholder="100"
+      />
+    </div>
+
+    <div class="ButtonEnvoieReset">
+      <button type="submit" class="btn btn-primary submit">
+        Create helmet!
+      </button>
+      <br /><br />
+      <button type="reset" class="btn btn-primary reset">Reset</button>
+    </div>
+  </form>
+</div>

@@ -1,1 +1,34 @@
-<p>leg works!</p>
+<div class="container-fluid">
+  <h1>Create your leg!</h1>
+
+  <!-- ARM CREATION FORM -->
+  <form [formGroup]="createLegForm" (ngSubmit)="onSubmit()">
+    <div class="col-md-6 mb-3">
+      <label> Leg name :</label>
+      <input
+        type="text"
+        formControlName="legName"
+        class="form-control"
+        placeholder="Name"
+      />
+    </div>
+
+    <div class="col-md-4 mb-3" id="legValue">
+      <label> Leg value:</label>
+      <input
+        type="number"
+        formControlName="legValue"
+        class="form-control"
+        placeholder="100"
+      />
+    </div>
+
+    <div class="ButtonEnvoieReset">
+      <button type="submit" class="btn btn-primary submit">
+        Create arm!
+      </button>
+      <br /><br />
+      <button type="reset" class="btn btn-primary reset">Reset</button>
+    </div>
+  </form>
+</div>
