@@ -9,6 +9,7 @@ import { TorsoComponent } from "./torso/torso.component";
 import { LegComponent } from "./leg/leg.component";
 import { ArmComponent } from "./arm/arm.component";
 import { ArmorComponent } from "./armor/armor.component";
+import { HeaderComponent } from "./header/header.component";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ArmorComponent } from "./armor/armor.component";
     TorsoComponent,
     LegComponent,
     ArmComponent,
-    ArmorComponent
+    ArmorComponent,
+    HeaderComponent
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
