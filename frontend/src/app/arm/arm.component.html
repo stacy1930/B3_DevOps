@@ -1,117 +1,31 @@
 <div class="container-fluid">
   <h1>Create your arm!</h1>
 
-  <!-- Formulaire d'ajout-->
-
+  <!-- ARM CREATION FORM -->
   <form [formGroup]="createArmForm" (ngSubmit)="onSubmit()">
     <div class="col-md-6 mb-3">
-      <label> Titre du bien :</label>
+      <label> Arm name :</label>
       <input
         type="text"
-        formControlName="bienTitre"
+        formControlName="armName"
         class="form-control"
-        placeholder="Titre"
-      />
-    </div>
-
-    <div class="form-group" id="AjoutDescriptionBien">
-      <label>Description du bien : </label>
-      <textarea
-        cols="50"
-        rows="5"
-        formControlName="bienDescriptif"
-        class="form-control"
-        placeholder="Description"
-      ></textarea>
-    </div>
-
-    <div class="col-md-6 mb-3" id="AjoutPrixMinimum">
-      <label>Prix minimum :</label>
-      <input
-        type="number"
-        formControlName="bienPrixMin"
-        class="form-control"
-        placeholder="prix Minimum"
-      />
-    </div>
-
-    <div class="col-md-6 mb-3" id="AjoutPrixVente">
-      <label> Prix de vente :</label>
-      <input
-        type="number"
-        formControlName="bienPrixDeVente"
-        class="form-control"
-        placeholder="prix de vente"
-      />
-    </div>
-
-    <div class="col-md-4 mb-3" id="AjoutNombreEtageBien">
-      <label> Nombre d'étage :</label>
-      <input
-        type="number"
-        formControlName="bienEtage"
-        class="form-control"
-        placeholder="nombre d'étage"
-      />
-    </div>
-
-    <div class="col-md-4 mb-3">
-      <label> Nombre de pièces :</label>
-      <input
-        type="number"
-        formControlName="bienNbPiece"
-        class="form-control"
-        placeholder="Nombre de pièces"
+        placeholder="Name"
       />
     </div>
 
     <div class="col-md-4 mb-3" id="armValue">
-      <label> arm value:</label>
+      <label> Arm value:</label>
       <input
         type="number"
-        formControlName="bienSuperficie"
+        formControlName="armValue"
         class="form-control"
-        placeholder="m²"
+        placeholder="100"
       />
-    </div>
-
-    <div class="adresse">
-      <p>Adresse du bien :</p>
-      <div class="col-md-4 mb-3">
-        <label> Code Postal :</label>
-        <input
-          type="text"
-          formControlName="adresseCodePostal"
-          class="form-control"
-          placeholder="code Postal"
-        />
-      </div>
-      <div class="col-md-4 mb-3">
-        <label> Nom de la rue :</label>
-        <input
-          type="text"
-          formControlName="adresseNomRue"
-          class="form-control"
-          placeholder="Rue"
-        />
-      </div>
-      <div class="col-md-4 mb-3">
-        <label> Numéro de rue :</label>
-        <input
-          type="text"
-          formControlName="adresseNumRue"
-          class="form-control"
-          placeholder="numéro"
-        />
-      </div>
-      <div class="form-group">
-        <label>Ville</label>
-      </div>
     </div>
 
     <div class="ButtonEnvoieReset">
       <button type="submit" class="btn btn-primary submit">
-        Ajouter le bien
+        Create arm!
       </button>
       <br /><br />
       <button type="reset" class="btn btn-primary reset">Reset</button>
