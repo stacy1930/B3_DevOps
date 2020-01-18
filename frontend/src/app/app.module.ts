@@ -11,6 +11,8 @@ import { ArmComponent } from "./arm/arm.component";
 import { ArmorComponent } from "./armor/armor.component";
 import { HeaderComponent } from "./header/header.component";
 
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +24,7 @@ import { HeaderComponent } from "./header/header.component";
     ArmorComponent,
     HeaderComponent
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent]
 })
