@@ -5,12 +5,12 @@ const types = require('../constants');
 // Import ROUTER
 const router = express.Router();
 
-//GET SPECIFIC CLOAK
+//GET LIST OF CLOAKS
 
-router.get("/:id", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
-    const cloak = await Component.findOne({_id: req.params.id, type: types.CLOAK});
-    res.json(cloak);
+    const cloaks = await Component.find({type: types.CLOAK});
+    res.json(cloaks);
   } catch (err) {
     res.json({ message: err });
   }

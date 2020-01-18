@@ -5,11 +5,11 @@ const types = require("../constants");
 //IMPORT ROUTER
 const router = express.Router();
 
-// GET -- DETAIL OF HELMET (BY ID) SPECIFIC HELMET
-router.get("/:id", async (req, res) => {
+// GET -- LIST OF HELMETS
+router.get("/", async (req, res) => {
     try {
-        const helmet = await Component.findOne({_id: req.params.id, type: types.HELMET});
-        res.json(helmet);
+        const helmets = await Component.find({type: types.HELMET});
+        res.json(helmets);
     } catch (err) {
         res.json({ message: err });
     }

@@ -5,12 +5,12 @@ const types = require("../constants");
 // Import ROUTER
 const router = express.Router();
 
-//GET SPECIFIC TORSO
+//GET LIST OF TORSOS
 
-router.get("/:id", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
-    const torso = await Component.findOne({_id: req.params.id, type: types.TORSO});
-    res.json(torso);
+    const torsos = await Component.find({type: types.TORSO});
+    res.json(torsos);
   } catch (err) {
     res.json({ message: err });
   }
