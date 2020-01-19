@@ -33,22 +33,51 @@ export class CloakComponent implements OnInit {
   }
 
   onSubmit() {
-    this.submitted = true;
-    const jsonCloak = JSON.parse(
-      '{"name":"' +
-        this.createCloakForm.value["cloakName"] +
-        '", "value": ' +
-        this.createCloakForm.value["cloakValue"] +
-        "}"
-    );
+    const requestType = (document.getElementById("type") as HTMLInputElement)
+      .value;
 
-    console.log(jsonCloak);
+    if (requestType === "add") {
+      this.submitted = true;
+      const jsonCloak = JSON.parse(
+        '{"name":"' +
+          this.createCloakForm.value["cloakName"] +
+          '", "value": ' +
+          this.createCloakForm.value["cloakValue"] +
+          "}"
+      );
 
-    const postUrlCloak = "http://localhost:3000/cloak";
-    this.http.post(postUrlCloak, jsonCloak).subscribe();
+      const postUrlCloak = "http://localhost:3000/cloak";
+      this.http.post(postUrlCloak, jsonCloak).subscribe();
+    } else {
+      this.submitted = true;
+      const jsonUpdateCloak = JSON.parse(
+        '{"name":"' +
+          this.createCloakForm.value["cloakName"] +
+          '", "value": ' +
+          this.createCloakForm.value["cloakValue"] +
+          "}"
+      );
+
+      const updateUrlCloak = "http://localhost:3000/cloak/" + requestType;
+      this.http.put(updateUrlCloak, jsonUpdateCloak).subscribe();
+    }
   }
+
   onDeleteCloak(cloakId) {
     const urlCloak = "http://localhost:3000/cloak/" + cloakId;
     this.http.delete(urlCloak).subscribe();
+  }
+
+  onUpdateCloak(cloakName, cloakValue, cloakId) {
+    document.getElementById("submit").classList.remove("btn-success");
+    document.getElementById("submit").classList.add("btn-warning");
+    document.getElementById("submit").innerHTML = "Edit cloak";
+    (document.getElementById("type") as HTMLInputElement).value = cloakId;
+    (document.getElementById(
+      "cloakName"
+    ) as HTMLInputElement).placeholder = cloakName;
+    (document.getElementById(
+      "cloakValue"
+    ) as HTMLInputElement).placeholder = cloakValue;
   }
 }

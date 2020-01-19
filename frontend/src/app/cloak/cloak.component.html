@@ -10,21 +10,25 @@
         formControlName="cloakName"
         class="form-control"
         placeholder="Name"
+        id="cloakName"
       />
     </div>
 
-    <div class="col-md-4 mb-3" id="cloakValue">
+    <div class="col-md-4 mb-3">
       <label> Cloak value:</label>
       <input
         type="number"
         formControlName="cloakValue"
         class="form-control"
         placeholder="100"
+        id="cloakValue"
       />
     </div>
 
+    <input type="hidden" id="type" value="add" />
+
     <div class="ButtonEnvoieReset">
-      <button type="submit" class="btn btn-success submit">
+      <button type="submit" id="submit" class="btn btn-success submit">
         Create cloak!
       </button>
       <br /><br />
@@ -41,8 +45,18 @@
         ><br />
         <span>Id : {{ cloak[2] }}</span
         ><br />
-        <button (click)="onDeleteCloak(cloak[2])" class="btn btn-danger btn-sm">
+        <a
+          href="/cloaks"
+          (click)="onDeleteCloak(cloak[2])"
+          class="btn btn-danger btn-sm"
+        >
           Delete
+        </a>
+        <button
+          (click)="onUpdateCloak(cloak[0], cloak[1], cloak[2])"
+          class="btn btn-warning btn-sm"
+        >
+          Edit
         </button>
         <br />
       </ul>
