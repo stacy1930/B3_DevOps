@@ -40,7 +40,14 @@
         <span>Valeur : {{ torso[1] }}</span
         ><br />
         <span>Id : {{ torso[2] }}</span
-        ><br /><br />
+        ><br />
+        <a
+          href="/torso"
+          (click)="onDeleteTorso(torso[2])"
+          class="btn btn-danger btn-sm"
+          >Delete</a
+        >
+        <br />
       </ul>
     </li>
   </ul>

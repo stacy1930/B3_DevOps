@@ -41,9 +41,13 @@
         ><br />
         <span>Id : {{ arm[2] }}</span
         ><br />
-        <a href="#" (click)="onDeleteArm(arm.id)" class="btn btn-danger btn-sm"
+        <a
+          href="/arms"
+          (click)="onDeleteArm(arm[2])"
+          class="btn btn-danger btn-sm"
           >Delete</a
         >
+
         <br /><br />
       </ul>
     </li>
