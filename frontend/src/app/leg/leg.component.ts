@@ -30,7 +30,11 @@ export class LegComponent implements OnInit {
     });
   }
 
-  onDeleteLeg() {}
+  onDeleteLeg(legId) {
+    const urlOnDelete = "http://localhost:3000/leg/" + legId;
+    this.http.delete(urlOnDelete).subscribe();
+    // console.log(urlOnDelete);
+  }
 
   onSubmit() {
     this.submitted = true;

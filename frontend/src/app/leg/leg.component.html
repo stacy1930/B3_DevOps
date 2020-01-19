@@ -40,7 +40,9 @@
         <span>Valeur : {{ leg[1] }}</span
         ><br />
         <span>Id : {{ leg[2] }}</span
-        ><br /><br />
+        ><br />
+        <a href="/legs" (click)="onDeleteLeg(leg[2])">Delete</a
+        ><br />
       </ul>
     </li>
   </ul>
