@@ -129,4 +129,9 @@ export class ArmorComponent implements OnInit {
     const postUrlArmor = "http://localhost:3000/armor";
     this.http.post(postUrlArmor, jsonArmor).subscribe();
   }
+
+  onDeleteArmor(armorId) {
+    const urlArmor = "http://localhost:3000/armor/" + armorId;
+    this.http.delete(urlArmor).subscribe();
+  }
 }
