@@ -1,1 +1,22 @@
-<p>armor works!</p>
+<ul>
+  <li *ngFor="let armor of armors">
+    <ul>
+      <span>Nom : {{ armor[0] }}</span>
+      <br />
+      <ul>
+        <li *ngFor="let item of armor[2]">
+          <span *ngIf="item != null">
+            Type : {{ item.type }}
+            <ul>
+              <li>Name : {{ item.name }}</li>
+              <li>Value : {{ item.value }}</li>
+            </ul>
+            <br />
+          </span>
+        </li>
+      </ul>
+
+      <br /><br />
+    </ul>
+  </li>
+</ul>
