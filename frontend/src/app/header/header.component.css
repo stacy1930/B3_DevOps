@@ -15,14 +15,14 @@ a {
   width: 90%;
 }
 .arms {
-  width: 90%;
+  width: 100%;
 }
 .leg {
-  width: 35%;
-}
-.cloak {
   width: 60%;
 }
+.cloak {
+  width: 90%;
+}
 .torso {
-  width: 70%;
+  width: 100%;
 }
