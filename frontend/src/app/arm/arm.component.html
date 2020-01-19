@@ -2,8 +2,8 @@
   <h1>Create your arm!</h1>
 
   <!-- ARM CREATION FORM -->
-  <form [formGroup]="createArmForm" (ngSubmit)="onSubmit()">
-    <div class="col-md-6 mb-3">
+  <form [formGroup]="createArmForm" (ngSubmit)="onSubmit()" class="form-inline">
+    <div class="col-md-5 mb-3">
       <label> Arm name :</label>
       <input
         type="text"
@@ -13,7 +13,7 @@
       />
     </div>
 
-    <div class="col-md-4 mb-3" id="armValue">
+    <div class="col-md-5 mb-3" id="armValue">
       <label> Arm value:</label>
       <input
         type="number"
@@ -47,6 +47,49 @@
           class="btn btn-danger btn-sm"
           >Delete</a
         >
+
+        <!-- <a
+          href="/arms"
+          (click)="onUpdateArm(arm[2])"
+          class="btn btn-warning btn-sm"
+          >Edit</a
+        > -->
+
+        <!-- ARM MODIFICATION FORM -->
+        <form [formGroup]="modificationArmForm" class="form-inline">
+          <div class="col-md-2 mb-3">
+            <label> Arm name :</label>
+            <input
+              type="text"
+              formControlName="armName"
+              class="form-control"
+              value=" {{ arm[0] }}"
+            />
+          </div>
+
+          <div class="col-md-2 mb-3">
+            <label> Arm value:</label>
+            <input
+              type="number"
+              formControlName="armValue"
+              class="form-control"
+              value="{{ arm[1] }}"
+            />
+          </div>
+
+          <div class="ButtonEnvoieReset">
+            <!-- <button type="submit" class="btn btn-warning submit">
+              Edit arm!
+            </button> -->
+            <a
+              href="/arms"
+              (click)="onUpdateArm(arm[2])"
+              class="btn btn-warning btn-sm"
+              >Edit arm!</a
+            >
+            <br /><br />
+          </div>
+        </form>
 
         <br /><br />
       </ul>

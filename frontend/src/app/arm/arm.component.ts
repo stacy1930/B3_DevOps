@@ -19,6 +19,12 @@ export class ArmComponent implements OnInit {
     armValue: new FormControl("")
   });
 
+  // FORMGROUP - MODIFICATION
+  modificationArmForm = new FormGroup({
+    armName: new FormControl(""),
+    armValue: new FormControl("")
+  });
+
   arms = [];
   submitted = false;
 
@@ -53,5 +59,21 @@ export class ArmComponent implements OnInit {
   onDeleteArm(armId) {
     const urlArm = "http://localhost:3000/arm/" + armId;
     this.http.delete(urlArm).subscribe();
+  }
+
+  onUpdateArm(armId) {
+    const urlArmModif = "http://localhost:3000/arm/" + armId;
+    this.http
+      .put(
+        urlArmModif,
+        JSON.parse(
+          '{"name":"' +
+            this.modificationArmForm.value["armName"] +
+            '", "value": ' +
+            this.modificationArmForm.value["armValue"] +
+            "}"
+        )
+      )
+      .subscribe();
   }
 }
