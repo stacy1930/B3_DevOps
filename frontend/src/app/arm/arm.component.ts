@@ -32,5 +32,9 @@ export class ArmComponent implements OnInit {
   }
 
   onSubmit() {}
-  onDeleteArm(id: number) {}
+  onDeleteArm(id: number) {
+    //   const urlArm: string = "http://localhost:3000/arm/" + id;
+    //   this.http.delete(urlArm, {}).pipe();
+    //   return this.arms;
+  }
 }
