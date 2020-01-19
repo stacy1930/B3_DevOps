@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <h1>Create your helmet!</h1>
 
-  <!-- ARM CREATION FORM -->
+  <!-- HELMET CREATION FORM -->
   <form [formGroup]="createHelmetForm" (ngSubmit)="onSubmit()">
     <div class="col-md-6 mb-3">
       <label> Helmet name :</label>
@@ -24,23 +24,25 @@
     </div>
 
     <div class="ButtonEnvoieReset">
-      <button type="submit" class="btn btn-primary submit">
+      <button type="submit" class="btn btn-success submit">
         Create helmet!
       </button>
       <br /><br />
-      <button type="reset" class="btn btn-primary reset">Reset</button>
+      <button type="reset" class="btn btn-info reset">Reset</button>
     </div>
   </form>
 
   <ul>
     <li *ngFor="let helmet of helmets">
       <ul>
-        <span>Nom : {{ helmet[0] }}</span
-        ><br />
-        <span>Valeur : {{ helmet[1] }}</span
-        ><br />
-        <span>Id : {{ helmet[2] }}</span
-        ><br /><br />
+        <span>Nom : {{ helmet[0] }}</span>
+        <br />
+        <span>Valeur : {{ helmet[1] }}</span>
+        <br />
+        <span>Id : {{ helmet[2] }}</span>
+        <br />
+        <a href="/helmets" (click)="onDeleteHelmet(helmet[2])">Delete</a>
+        <br />
       </ul>
     </li>
   </ul>

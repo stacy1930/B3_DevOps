@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid ">
   <h1>Create your arm!</h1>
 
   <!-- ARM CREATION FORM -->
@@ -8,7 +8,7 @@
       <input
         type="text"
         formControlName="armName"
-        class="form-control"
+        class="form-control form-control-lg"
         placeholder="Name"
       />
     </div>
@@ -18,17 +18,17 @@
       <input
         type="number"
         formControlName="armValue"
-        class="form-control"
+        class="form-control form-control-lg"
         placeholder="100"
       />
     </div>
 
     <div class="ButtonEnvoieReset">
-      <button type="submit" class="btn btn-primary submit">
+      <button type="submit" class="btn btn-success submit">
         Create arm!
       </button>
       <br /><br />
-      <button type="reset" class="btn btn-primary reset">Reset</button>
+      <button type="reset" class="btn btn-info reset">Reset</button>
     </div>
   </form>
 
@@ -41,9 +41,13 @@
         ><br />
         <span>Id : {{ arm[2] }}</span
         ><br />
-        <a href="#" (click)="onDeleteArm(arm.id)" class="btn btn-danger btn-sm"
+        <a
+          href="/arms"
+          (click)="onDeleteArm(arm[2])"
+          class="btn btn-danger btn-sm"
           >Delete</a
         >
+
         <br /><br />
       </ul>
     </li>

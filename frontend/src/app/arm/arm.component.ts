@@ -6,6 +6,7 @@ import {
   FormControl
 } from "@angular/forms";
 import { HttpClient } from "@angular/common/http";
+import { catchError } from "rxjs/operators";
 
 @Component({
   selector: "app-arm",
@@ -19,6 +20,7 @@ export class ArmComponent implements OnInit {
   });
 
   arms = [];
+  submitted = false;
 
   constructor(private http: HttpClient) {}
 
@@ -31,6 +33,25 @@ export class ArmComponent implements OnInit {
     });
   }
 
-  onSubmit() {}
-  onDeleteArm(id: number) {}
+  onSubmit() {
+    this.submitted = true;
+
+    const jsonArm = JSON.parse(
+      '{"name":"' +
+        this.createArmForm.value["armName"] +
+        '", "value": ' +
+        this.createArmForm.value["armValue"] +
+        "}"
+    );
+
+    console.log(jsonArm);
+
+    const postUrlArm = "http://localhost:3000/arm";
+    this.http.post(postUrlArm, jsonArm).subscribe();
+  }
+
+  onDeleteArm(armId) {
+    const urlArm = "http://localhost:3000/arm/" + armId;
+    this.http.delete(urlArm).subscribe();
+  }
 }

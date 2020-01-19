@@ -32,6 +32,21 @@ export class TorsoComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    const jsonTorso = JSON.parse(
+      '{"name":"' +
+        this.createTorsoForm.value["torsoName"] +
+        '", "value": ' +
+        this.createTorsoForm.value["torsoValue"] +
+        "}"
+    );
+
+    console.log(jsonTorso);
+
+    const postUrlTorso = "http://localhost:3000/torso";
+    this.http.post(postUrlTorso, jsonTorso).subscribe();
   }
-  onDeleteTorso() {}
+  onDeleteTorso(torsoId) {
+    const urlTorso = "http://localhost:3000/torso/" + torsoId;
+    this.http.delete(urlTorso).subscribe();
+  }
 }

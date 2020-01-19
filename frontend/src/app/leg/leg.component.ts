@@ -30,9 +30,25 @@ export class LegComponent implements OnInit {
     });
   }
 
-  onDeleteLeg() {}
+  onDeleteLeg(legId) {
+    const urlOnDelete = "http://localhost:3000/leg/" + legId;
+    this.http.delete(urlOnDelete).subscribe();
+    // console.log(urlOnDelete);
+  }
 
   onSubmit() {
     this.submitted = true;
+    const jsonLeg = JSON.parse(
+      '{"name":"' +
+        this.createLegForm.value["legName"] +
+        '", "value": ' +
+        this.createLegForm.value["legValue"] +
+        "}"
+    );
+
+    console.log(jsonLeg);
+
+    const postUrlLeg = "http://localhost:3000/leg";
+    this.http.post(postUrlLeg, jsonLeg).subscribe();
   }
 }
