@@ -1,0 +1,28 @@
+li {
+  list-style: none;
+  display: inline-block;
+  margin-left: 6%;
+  width: 5%;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  font-size: x-large;
+}
+
+.helmet {
+  width: 90%;
+}
+.arms {
+  width: 90%;
+}
+.leg {
+  width: 35%;
+}
+.cloak {
+  width: 60%;
+}
+.torso {
+  width: 70%;
+}
