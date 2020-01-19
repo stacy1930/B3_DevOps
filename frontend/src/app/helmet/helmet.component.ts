@@ -31,6 +31,18 @@ export class HelmetComponent implements OnInit {
   }
   onSubmit() {
     this.submitted = true;
+    const jsonHelmet = JSON.parse(
+      '{"name":"' +
+        this.createHelmetForm.value["helmetName"] +
+        '", "value": ' +
+        this.createHelmetForm.value["helmetValue"] +
+        "}"
+    );
+
+    console.log(jsonHelmet);
+
+    const postUrlHelmet = "http://localhost:3000/helmet";
+    this.http.post(postUrlHelmet, jsonHelmet).subscribe();
   }
   onDeleteHelmet(helmetId) {
     const urlOnDelete = "http://localhost:3000/helmet/" + helmetId;

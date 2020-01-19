@@ -38,5 +38,17 @@ export class LegComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    const jsonLeg = JSON.parse(
+      '{"name":"' +
+        this.createLegForm.value["legName"] +
+        '", "value": ' +
+        this.createLegForm.value["legValue"] +
+        "}"
+    );
+
+    console.log(jsonLeg);
+
+    const postUrlLeg = "http://localhost:3000/leg";
+    this.http.post(postUrlLeg, jsonLeg).subscribe();
   }
 }

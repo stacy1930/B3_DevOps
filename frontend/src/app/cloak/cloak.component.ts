@@ -34,6 +34,18 @@ export class CloakComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    const jsonCloak = JSON.parse(
+      '{"name":"' +
+        this.createCloakForm.value["cloakName"] +
+        '", "value": ' +
+        this.createCloakForm.value["cloakValue"] +
+        "}"
+    );
+
+    console.log(jsonCloak);
+
+    const postUrlCloak = "http://localhost:3000/cloak";
+    this.http.post(postUrlCloak, jsonCloak).subscribe();
   }
   onDeleteCloak(cloakId) {
     const urlCloak = "http://localhost:3000/cloak/" + cloakId;
