@@ -1,16 +1,12 @@
 import { Component, OnInit } from "@angular/core";
-<<<<<<< HEAD
 import { HttpClient } from "@angular/common/http";
-=======
 import {
   FormGroup,
   FormBuilder,
   Validators,
   FormControl
 } from "@angular/forms";
-import { HttpClient } from "@angular/common/http";
 import { catchError } from "rxjs/operators";
->>>>>>> 0946c83735d5a14aab5f1ae275fdc0dc74bd9f28
 
 @Component({
   selector: "app-armor",
@@ -18,18 +14,16 @@ import { catchError } from "rxjs/operators";
   styleUrls: ["./armor.component.css"]
 })
 export class ArmorComponent implements OnInit {
-<<<<<<< HEAD
   armors = [];
   constructor(private http: HttpClient) {}
 
-  ngOnInit() {
-    this.http.get("http://localhost:3000/armor").subscribe(value => {
-      for (let i = 0; i < Object.keys(value).length; i++) {
-        this.armors.push([value[i].name, value[i]._id, value[i].composition]);
-      }
-      console.log(this.armors);
-    });
-=======
+  // ngOnInit() {
+  //   this.http.get("http://localhost:3000/armor").subscribe(value => {
+  //     for (let i = 0; i < Object.keys(value).length; i++) {
+  //       this.armors.push([value[i].name, value[i]._id, value[i].composition]);
+  //     }
+  //     console.log(this.armors);
+  //   });
   // FORMGROUP - MODIFICATION
   chooseArmForm = new FormGroup({
     armChoice: new FormControl(""),
@@ -49,6 +43,14 @@ export class ArmorComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
+    // ARMOR
+      this.http.get("http://localhost:3000/armor").subscribe(value => {
+        for (let i = 0; i < Object.keys(value).length; i++) {
+          this.armors.push([value[i].name, value[i]._id, value[i].composition]);
+        }
+        console.log(this.armors);
+      }
+
     // ARM
     this.http.get("http://localhost:3000/arm").subscribe(value => {
       for (let i = 0; i < Object.keys(value).length; i++) {
@@ -138,6 +140,5 @@ export class ArmorComponent implements OnInit {
 
     const postUrlArmor = "http://localhost:3000/armor";
     this.http.post(postUrlArmor, jsonArmor).subscribe();
->>>>>>> 0946c83735d5a14aab5f1ae275fdc0dc74bd9f28
   }
 }
