@@ -43,6 +43,42 @@
         <br />
         <a href="/helmets" (click)="onDeleteHelmet(helmet[2])">Delete</a>
         <br />
+
+        <!-- HELMET MODIFICATION FORM -->
+        <form [formGroup]="modificationHelmetForm" class="form-inline">
+          <div class="col-md-2 mb-3">
+            <label> Helmet name :</label>
+            <input
+              type="text"
+              formControlName="helmetName"
+              class="form-control"
+              value=" {{ helmet[0] }}"
+            />
+          </div>
+
+          <div class="col-md-2 mb-3">
+            <label> Helmet value:</label>
+            <input
+              type="number"
+              formControlName="helmetValue"
+              class="form-control"
+              value="{{ helmet[1] }}"
+            />
+          </div>
+
+          <div class="ButtonEnvoieReset">
+            <!-- <button type="submit" class="btn btn-warning submit">
+              Edit arm!
+            </button> -->
+            <a
+              href="/helmets"
+              (click)="onUpdateHelmet(helmet[2])"
+              class="btn btn-warning btn-sm"
+              >Edit helmet!</a
+            >
+            <br /><br />
+          </div>
+        </form>
       </ul>
     </li>
   </ul>

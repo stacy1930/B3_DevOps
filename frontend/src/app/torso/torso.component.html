@@ -48,6 +48,39 @@
           >Delete</a
         >
         <br />
+
+        <!-- TORSO MODIFICATION FORM -->
+        <form [formGroup]="modificationTorsoForm" class="form-inline">
+          <div class="col-md-2 mb-3">
+            <label> Torso name :</label>
+            <input
+              type="text"
+              formControlName="torsoName"
+              class="form-control"
+              value=" {{ torso[0] }}"
+            />
+          </div>
+
+          <div class="col-md-2 mb-3">
+            <label> Torso value:</label>
+            <input
+              type="number"
+              formControlName="torsoValue"
+              class="form-control"
+              value="{{ torso[1] }}"
+            />
+          </div>
+
+          <div class="ButtonEnvoieReset">
+            <a
+              href="/torsos"
+              (click)="onUpdateTorso(torso[2])"
+              class="btn btn-warning btn-sm"
+              >Edit torso!</a
+            >
+            <br /><br />
+          </div>
+        </form>
       </ul>
     </li>
   </ul>

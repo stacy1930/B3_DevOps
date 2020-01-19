@@ -16,6 +16,11 @@ export class LegComponent implements OnInit {
     legName: new FormControl(""),
     legValue: new FormControl("")
   });
+
+  modificationLegForm = new FormGroup({
+    legName: new FormControl(""),
+    legValue: new FormControl("")
+  });
   legs = [];
   submitted = false;
 
@@ -34,6 +39,21 @@ export class LegComponent implements OnInit {
     const urlOnDelete = "http://localhost:3000/leg/" + legId;
     this.http.delete(urlOnDelete).subscribe();
     // console.log(urlOnDelete);
+  }
+  onUpdateLeg(legId) {
+    const urlLegModif = "http://localhost:3000/leg/" + legId;
+    this.http
+      .put(
+        urlLegModif,
+        JSON.parse(
+          '{"name":"' +
+            this.modificationLegForm.value["legName"] +
+            '", "value": ' +
+            this.modificationLegForm.value["legValue"] +
+            "}"
+        )
+      )
+      .subscribe();
   }
 
   onSubmit() {

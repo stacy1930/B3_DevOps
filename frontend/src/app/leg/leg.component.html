@@ -43,6 +43,39 @@
         ><br />
         <a href="/legs" (click)="onDeleteLeg(leg[2])">Delete</a
         ><br />
+
+        <!-- LEG MODIFICATION FORM -->
+        <form [formGroup]="modificationLegForm" class="form-inline">
+          <div class="col-md-2 mb-3">
+            <label> Leg name :</label>
+            <input
+              type="text"
+              formControlName="legName"
+              class="form-control"
+              value=" {{ leg[0] }}"
+            />
+          </div>
+
+          <div class="col-md-2 mb-3">
+            <label> Leg value:</label>
+            <input
+              type="number"
+              formControlName="legValue"
+              class="form-control"
+              value="{{ leg[1] }}"
+            />
+          </div>
+
+          <div class="ButtonEnvoieReset">
+            <a
+              href="/legs"
+              (click)="onUpdateLeg(leg[2])"
+              class="btn btn-warning btn-sm"
+              >Edit leg!</a
+            >
+            <br /><br />
+          </div>
+        </form>
       </ul>
     </li>
   </ul>
