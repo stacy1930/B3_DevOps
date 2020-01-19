@@ -32,5 +32,7 @@ export class HelmetComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
   }
-  onDeleteHelmet() {}
+  onDeleteHelmet(helmetId) {
+    console.log(helmetId);
+  }
 }
