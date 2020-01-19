@@ -19,7 +19,7 @@ const legRoute = require("./routes/leg");
 const cloakRoute = require("./routes/cloak");
 const torsoRoute = require("./routes/torso");
 
-app.use("/", armorRoute);
+app.use("/armor", armorRoute);
 app.use("/arm", armRoute);
 app.use("/leg", legRoute);
 app.use("/helmet", helmetRoute);
