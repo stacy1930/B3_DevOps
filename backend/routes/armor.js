@@ -9,7 +9,7 @@ const router = express.Router();
 //GET LIST OF ARMORS
 router.get("/", async (req, res) => {
     try {
-        const armors = await Armor.find({});
+        const armors = await Armor.find({}).populate("composition");
         res.json(armors);
     } catch (err) {
         res.json({ message: err });
