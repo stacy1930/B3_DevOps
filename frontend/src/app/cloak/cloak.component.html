@@ -25,10 +25,8 @@
       />
     </div>
 
-    <input type="hidden" id="type" value="add" />
-
     <div class="ButtonEnvoieReset">
-      <button type="submit" id="submit" class="btn btn-success submit">
+      <button type="submit" class="btn btn-success submit">
         Create cloak!
       </button>
       <br /><br />
@@ -52,13 +50,43 @@
         >
           Delete
         </a>
-        <button
-          (click)="onUpdateCloak(cloak[0], cloak[1], cloak[2])"
-          class="btn btn-warning btn-sm"
-        >
-          Edit
-        </button>
-        <br />
+
+        <form [formGroup]="modificationCloakForm" class="form-inline">
+          <div class="col-md-2 mb-3">
+            <label> Cloak name :</label>
+            <input
+              type="text"
+              formControlName="cloakName"
+              class="form-control"
+              value=" {{ cloak[0] }}"
+            />
+          </div>
+
+          <div class="col-md-2 mb-3">
+            <label> Cloak value:</label>
+            <input
+              type="number"
+              formControlName="cloakValue"
+              class="form-control"
+              value="{{ cloak[1] }}"
+            />
+          </div>
+
+          <div class="ButtonEnvoieReset">
+            <!-- <button type="submit" class="btn btn-warning submit">
+                Edit cloak!
+              </button> -->
+            <a
+              href="/cloaks"
+              (click)="onUpdateCloak(cloak[2])"
+              class="btn btn-warning btn-sm"
+              >Edit cloak!</a
+            >
+            <br /><br />
+          </div>
+        </form>
+
+        <br /><br />
       </ul>
     </li>
   </ul>
