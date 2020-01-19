@@ -15,7 +15,7 @@ a {
   width: 90%;
 }
 .arms {
-  width: 100%;
+  width: 150%;
 }
 .leg {
   width: 60%;
@@ -25,4 +25,7 @@ a {
 }
 .torso {
   width: 100%;
+}
+.armor {
+  width: 130%;
 }

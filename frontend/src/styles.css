@@ -1,2 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.min.css";
+
+h1 {
+  text-align: center;
+  background-color: #343a40;
+  color: white;
+  width: 50%;
+  margin: auto;
+  border-radius: 10px;
+  padding: 1%;
+}
+
+.routes {
+  padding: 1%;
+}
