@@ -6,6 +6,10 @@ import {
   Validators,
   FormControl
 } from "@angular/forms";
+<<<<<<< HEAD
+=======
+
+>>>>>>> ea820f8f55d63ecda44947ce18c06ae40c2b5c5f
 import { catchError } from "rxjs/operators";
 
 @Component({
@@ -14,6 +18,7 @@ import { catchError } from "rxjs/operators";
   styleUrls: ["./armor.component.css"]
 })
 export class ArmorComponent implements OnInit {
+<<<<<<< HEAD
   armors = [];
   constructor(private http: HttpClient) {}
 
@@ -24,6 +29,8 @@ export class ArmorComponent implements OnInit {
   //     }
   //     console.log(this.armors);
   //   });
+=======
+>>>>>>> ea820f8f55d63ecda44947ce18c06ae40c2b5c5f
   // FORMGROUP - MODIFICATION
   chooseArmForm = new FormGroup({
     armChoice: new FormControl(""),
@@ -33,7 +40,7 @@ export class ArmorComponent implements OnInit {
     helmetChoice: new FormControl(""),
     torsoChoice: new FormControl("")
   });
-
+  armors = [];
   arms = [];
   cloaks = [];
   helmets = [];
@@ -43,6 +50,7 @@ export class ArmorComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
+<<<<<<< HEAD
     // ARMOR
       this.http.get("http://localhost:3000/armor").subscribe(value => {
         for (let i = 0; i < Object.keys(value).length; i++) {
@@ -51,6 +59,14 @@ export class ArmorComponent implements OnInit {
         console.log(this.armors);
       }
 
+=======
+    this.http.get("http://localhost:3000/armor").subscribe(value => {
+      for (let i = 0; i < Object.keys(value).length; i++) {
+        this.armors.push([value[i].name, value[i]._id, value[i].composition]);
+      }
+      console.log(this.armors);
+    });
+>>>>>>> ea820f8f55d63ecda44947ce18c06ae40c2b5c5f
     // ARM
     this.http.get("http://localhost:3000/arm").subscribe(value => {
       for (let i = 0; i < Object.keys(value).length; i++) {
