@@ -33,5 +33,8 @@ export class TorsoComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
   }
-  onDeleteTorso() {}
+  onDeleteTorso(torsoId) {
+    const urlTorso = "http://localhost:3000/torso/" + torsoId;
+    this.http.delete(urlTorso).subscribe();
+  }
 }

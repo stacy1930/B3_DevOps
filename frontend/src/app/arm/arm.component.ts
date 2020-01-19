@@ -6,6 +6,7 @@ import {
   FormControl
 } from "@angular/forms";
 import { HttpClient } from "@angular/common/http";
+import { catchError } from "rxjs/operators";
 
 @Component({
   selector: "app-arm",
@@ -32,9 +33,9 @@ export class ArmComponent implements OnInit {
   }
 
   onSubmit() {}
-  onDeleteArm(id: number) {
-    //   const urlArm: string = "http://localhost:3000/arm/" + id;
-    //   this.http.delete(urlArm, {}).pipe();
-    //   return this.arms;
+
+  onDeleteArm(armId) {
+    const urlArm = "http://localhost:3000/arm/" + armId;
+    this.http.delete(urlArm).subscribe();
   }
 }

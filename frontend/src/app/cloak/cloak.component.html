@@ -40,7 +40,11 @@
         <span>Valeur : {{ cloak[1] }}</span
         ><br />
         <span>Id : {{ cloak[2] }}</span
-        ><br /><br />
+        ><br />
+        <button (click)="onDeleteCloak(cloak[2])" class="btn btn-danger btn-sm">
+          Delete
+        </button>
+        <br />
       </ul>
     </li>
   </ul>
