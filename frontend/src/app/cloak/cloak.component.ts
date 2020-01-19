@@ -35,5 +35,8 @@ export class CloakComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
   }
-  onDeleteCloak() {}
+  onDeleteCloak(cloakId) {
+    const urlCloak = "http://localhost:3000/cloak/" + cloakId;
+    this.http.delete(urlCloak).subscribe();
+  }
 }

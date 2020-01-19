@@ -20,6 +20,7 @@ export class ArmComponent implements OnInit {
   });
 
   arms = [];
+  submitted = false;
 
   constructor(private http: HttpClient) {}
 
@@ -32,7 +33,21 @@ export class ArmComponent implements OnInit {
     });
   }
 
-  onSubmit() {}
+  onSubmit() {
+    this.submitted = true;
+    const postUrlArm = "http://localhost:3000/arm/";
+    this.http.post(postUrlArm, this.arms).subscribe();
+  }
+
+  // console.log(bien);
+  // this.posts = this.http
+  //   .post(this._url, bien, {
+  //     headers: {
+  //       Authorization: "bearer " + localStorage.getItem("user_token")
+  //     }
+  //   })
+  //   .pipe(catchError(this.handleError)); // then handle the error;
+  // return this.posts;
 
   onDeleteArm(armId) {
     const urlArm = "http://localhost:3000/arm/" + armId;
