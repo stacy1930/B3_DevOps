@@ -1,1 +1,65 @@
-<p>armor works!</p>
+<div class="container-fluid ">
+  <h1>Create your armor!</h1>
+
+  <!-- ARM CREATION FORM -->
+  <form [formGroup]="chooseArmForm" (ngSubmit)="onSubmit()" class="form-inline">
+    <div class="col-md-5 mb-3">
+      <label> Armor name :</label>
+      <input
+        type="text"
+        formControlName="armorName"
+        class="form-control form-control-lg"
+        placeholder="Name"
+      />
+    </div>
+
+    <div class="col-md-6 mb-3" id="chooseArm">
+      <label>Arm</label>
+      <select formControlName="armChoice" defau class="form-control">
+        <option *ngFor="let arm of arms" [value]="arm[2]">{{ arm[0] }}</option>
+      </select>
+    </div>
+
+    <div class="col-md-6 mb-3" id="chooseCloak">
+      <label>Cloak</label>
+      <select formControlName="cloakChoice" defau class="form-control">
+        <option *ngFor="let cloak of cloaks" [value]="cloak[2]">{{
+          cloak[0]
+        }}</option>
+      </select>
+    </div>
+
+    <div class="col-md-6 mb-3" id="chooseHelmet">
+      <label>Helmet</label>
+      <select formControlName="helmetChoice" defau class="form-control">
+        <option *ngFor="let helmet of helmets" [value]="helmet[2]">{{
+          helmet[0]
+        }}</option>
+      </select>
+    </div>
+
+    <div class="col-md-6 mb-3" id="chooseLeg">
+      <label>Leg</label>
+      <select formControlName="legChoice" defau class="form-control">
+        <option *ngFor="let leg of legs" [value]="leg[2]">{{ leg[0] }}</option>
+      </select>
+    </div>
+
+    <div class="col-md-6 mb-3" id="chooseTorso">
+      <label>Torso</label>
+      <select formControlName="torsoChoice" defau class="form-control">
+        <option *ngFor="let torso of torsos" [value]="torso[2]">{{
+          torso[0]
+        }}</option>
+      </select>
+    </div>
+
+    <div class="ButtonEnvoieReset">
+      <button type="submit" class="btn btn-success submit">
+        Create armor!
+      </button>
+      <br /><br />
+      <button type="reset" class="btn btn-info reset">Reset</button>
+    </div>
+  </form>
+</div>
