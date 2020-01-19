@@ -12,14 +12,14 @@ var app = express();
 
 app.use(bodyParser.json());
 
-//const armorRoute = require("./routes/armor");
+const armorRoute = require("./routes/armor");
 const armRoute = require("./routes/arm");
 const helmetRoute = require("./routes/helmet");
 const legRoute = require("./routes/leg");
 const cloakRoute = require("./routes/cloak");
 const torsoRoute = require("./routes/torso");
 
-//app.use("/", armorRoute);
+app.use("/", armorRoute);
 app.use("/arm", armRoute);
 app.use("/leg", legRoute);
 app.use("/helmet", helmetRoute);
