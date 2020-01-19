@@ -33,6 +33,8 @@ export class HelmetComponent implements OnInit {
     this.submitted = true;
   }
   onDeleteHelmet(helmetId) {
-    console.log(helmetId);
+    const urlOnDelete = "http://localhost:3000/helmet/" + helmetId;
+    this.http.delete(urlOnDelete).subscribe();
+    // console.log(urlOnDelete);
   }
 }
