@@ -32,5 +32,5 @@ export class ArmComponent implements OnInit {
   }
 
   onSubmit() {}
-  onDeleteArm(id) {}
+  onDeleteArm(id: number) {}
 }
