@@ -77,9 +77,7 @@ export class ArmorComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     const jsonArmor = JSON.parse(
-      '{"name":"' +
-        this.chooseArmForm.value["armorName"] +
-        '", "composition": [{' +
+      '{"composition": [{' +
         this.chooseArmForm.value["armChoice"] +
         "}," +
         "{" +
@@ -94,8 +92,30 @@ export class ArmorComponent implements OnInit {
         "{" +
         this.chooseArmForm.value["cloakChoice"] +
         "}," +
-        "]" +
+        "]," +
+        '"name":' +
+        this.chooseArmForm.value["armorName"] +
         "}"
+
+      // '{"name":"' +
+      //   this.chooseArmForm.value["armorName"] +
+      //   '", "composition": [{' +
+      //   this.chooseArmForm.value["armChoice"] +
+      //   "}," +
+      //   "{" +
+      //   this.chooseArmForm.value["legChoice"] +
+      //   "}," +
+      //   "{" +
+      //   this.chooseArmForm.value["helmetChoice"] +
+      //   "}," +
+      //   "{" +
+      //   this.chooseArmForm.value["torsoChoice"] +
+      //   "}," +
+      //   "{" +
+      //   this.chooseArmForm.value["cloakChoice"] +
+      //   "}," +
+      //   "]" +
+      //   "}"
     );
 
     console.log(jsonArmor);
